@@ -206,7 +206,19 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>📱 Phone Remote Control</h1>
+        <h1>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style={{minWidth: '24px'}}>
+            <path d="M17 2H7C5.89543 2 5 2.89543 5 4V20C5 21.1046 5.89543 22 7 22H17C18.1046 22 19 21.1046 19 20V4C19 2.89543 18.1046 2 17 2Z" stroke="url(#gradient)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M12 18H12.01" stroke="url(#gradient)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            <defs>
+              <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#00d4ff" />
+                <stop offset="100%" stopColor="#8b5cf6" />
+              </linearGradient>
+            </defs>
+          </svg>
+          Phone Remote Control
+        </h1>
         
         {/* Connection Setup */}
         <div className="connection-panel">
@@ -221,7 +233,7 @@ function App() {
             Check Connection
           </button>
           <div className={`status ${isConnected ? 'connected' : 'disconnected'}`}>
-            {isConnected ? '🟢 Connected' : '🔴 Disconnected'}
+            {isConnected ? 'Connected' : 'Disconnected'}
           </div>
         </div>
 
@@ -235,7 +247,11 @@ function App() {
             className="btn-control btn-previous"
             disabled={!isConnected}
           >
-            ⏮️ Previous
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M19 20L9 12L19 4V20Z" fill="currentColor"/>
+              <path d="M5 19V5" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+            </svg>
+            Previous
           </button>
           
           <button 
@@ -243,7 +259,10 @@ function App() {
             className="btn-control btn-play"
             disabled={!isConnected}
           >
-            ⏯️ Play/Pause
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M8 5V19L19 12L8 5Z" fill="currentColor"/>
+            </svg>
+            Play/Pause
           </button>
           
           <button 
@@ -251,7 +270,11 @@ function App() {
             className="btn-control btn-next"
             disabled={!isConnected}
           >
-            ⏭️ Next
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M5 4L15 12L5 20V4Z" fill="currentColor"/>
+              <path d="M19 5V19" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+            </svg>
+            Next
           </button>
         </div>
 
@@ -262,7 +285,11 @@ function App() {
             className="btn-volume"
             disabled={!isConnected}
           >
-            🔉 Volume Down
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M11 5L6 9H2V15H6L11 19V5Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M15.54 8.46C16.4774 9.39764 17.0039 10.6692 17.0039 11.995C17.0039 13.3208 16.4774 14.5924 15.54 15.53" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+            Volume Down
           </button>
           
           <button 
@@ -270,7 +297,11 @@ function App() {
             className="btn-volume"
             disabled={!isConnected}
           >
-            🔇 Mute
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M11 5L6 9H2V15H6L11 19V5Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M23 9L17 15M17 9L23 15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+            Mute
           </button>
           
           <button 
@@ -278,37 +309,13 @@ function App() {
             className="btn-volume"
             disabled={!isConnected}
           >
-            🔊 Volume Up
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M11 5L6 9H2V15H6L11 19V5Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M15.54 8.46C16.4774 9.39764 17.0039 10.6692 17.0039 11.995C17.0039 13.3208 16.4774 14.5924 15.54 15.53M19.07 4.93C21.9447 7.80528 23.5554 11.7792 23.5554 15.92C23.5554 20.0608 21.9447 24.0347 19.07 26.91" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+            Volume Up
           </button>
         </div>
-
-        {/* Advanced Features */}
-        <div className="advanced-controls">
-          <button 
-            onClick={requestOrientationPermission}
-            className={`btn-feature ${gestureEnabled ? 'active' : ''}`}
-            disabled={!isConnected}
-          >
-            {gestureEnabled ? '✓ Gesture ON' : 'Enable Gestures'}
-          </button>
-          
-          <button 
-            onClick={toggleVoice}
-            className={`btn-feature ${voiceEnabled ? 'active' : ''}`}
-            disabled={!isConnected}
-          >
-            {voiceEnabled ? '🎤 Voice ON' : '🎤 Enable Voice'}
-          </button>
-        </div>
-
-        {/* Tilt Data Display */}
-        {gestureEnabled && (
-          <div className="tilt-display">
-            Tilt: β={tiltData.beta}° γ={tiltData.gamma}°
-            <br />
-            <small>Tilt phone to control</small>
-          </div>
-        )}
 
         {/* Instructions */}
         <div className="instructions">
@@ -316,8 +323,6 @@ function App() {
           <ul>
             <li>Enter your laptop's IP address and port (shown in backend terminal)</li>
             <li>Tap buttons to control media playback</li>
-            <li>Enable gestures to tilt phone for controls</li>
-            <li>Enable voice (HTTPS only) to use voice commands</li>
           </ul>
         </div>
       </header>
